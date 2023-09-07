@@ -104,11 +104,9 @@ public class BinaryTree {
 		// Returns root node
 		Node root = binaryTr.buildBinaryTree(nodes);
 
-//		System.out.println(root.data);
+		preOrder(root);
 
-//		preOrder(root);
-
-//		inOrder(root);
+		inOrder(root);
 		
 		postOrder(root);
 		
