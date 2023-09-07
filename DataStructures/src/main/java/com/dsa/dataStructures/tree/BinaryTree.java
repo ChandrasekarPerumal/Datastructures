@@ -81,6 +81,19 @@ public class BinaryTree {
 	}
 	
 	
+	public static void postOrder(Node root) {
+		
+		if(root == null) {
+			return;
+		}
+		
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.println(root.data);
+		
+	}
+	
+	
 	public static void main(String ar[]) {
 		int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -93,7 +106,9 @@ public class BinaryTree {
 
 //		preOrder(root);
 
-		inOrder(root);
+//		inOrder(root);
+		
+		postOrder(root);
 		
 	}
 
