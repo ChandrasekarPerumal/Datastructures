@@ -1,5 +1,8 @@
 package com.dsa.dataStructures.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
 
 	static class Node {
@@ -47,55 +50,96 @@ public class BinaryTree {
 	public static void preOrder(Node root) {
 
 //		Time : O( N )
-		
+
 		if (root == null) {
 			System.out.println(-1);
 			return;
-		} 
-
-			System.out.println(root.data);
-
-			// Traverse thru left tree
-			preOrder(root.left);
-
-			// Traverse thru right tree
-			preOrder(root.right);
-		
-	}
-
-	
-	
-	public static void inOrder(Node root) {
-		
-		if(root == null) {
-			System.out.println(-1);
-			return;
 		}
-		
-		inOrder(root.left);
-		
+
 		System.out.println(root.data);
-		
-		inOrder(root.right);
-		
-		
+
+		// Traverse thru left tree
+		preOrder(root.left);
+
+		// Traverse thru right tree
+		preOrder(root.right);
+
 	}
-	
-	
-	public static void postOrder(Node root) {
-		
-		if(root == null) {
+
+	public static void inOrder(Node root) {
+
+		if (root == null) {
 			System.out.println(-1);
 			return;
 		}
-		
+
+		inOrder(root.left);
+
+		System.out.println(root.data);
+
+		inOrder(root.right);
+
+	}
+
+	public static void postOrder(Node root) {
+
+		if (root == null) {
+			System.out.println(-1);
+			return;
+		}
+
 		postOrder(root.left);
 		postOrder(root.right);
 		System.out.println(root.data);
-		
+
 	}
-	
-	
+
+	public static void levelOrderTraversal(Node root) {
+
+		
+		//Consider
+		// Queue:  1 null 2 3 null 4 5 6 null
+		// null - next line
+		// output : will be level by level. Like left pyramid
+		//		1
+		//		23
+		//		456
+		
+		Queue<Node> queue = new LinkedList();
+
+		queue.add(root);
+		queue.add(null);
+
+		while (!queue.isEmpty()) {
+
+			// Remove the node from the queue
+			Node node = queue.remove();
+
+			if (node == null) {
+				// Reached final null and No more elements in Queue
+				// Then break;
+				if (queue.isEmpty()) {
+					break;
+				} else {
+					System.out.println();
+					// Queue is not empty even after remove null value from the queue
+					queue.add(null);
+				}
+			} else {
+				System.out.print(node.data);
+				if (node.left != null) {
+					queue.add(node.left);
+				}
+				if (node.right != null) {
+					queue.add(node.right);
+				}
+
+			}
+
+		}
+
+	}
+
 	public static void main(String ar[]) {
 		int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -104,11 +148,13 @@ public class BinaryTree {
 		// Returns root node
 		Node root = binaryTr.buildBinaryTree(nodes);
 
-		preOrder(root);
-
-		inOrder(root);
+//		preOrder(root);
 		
-		postOrder(root);
+//		inOrder(root);
+
+//		postOrder(root);
+
+		levelOrderTraversal(root);
 		
 	}
 
