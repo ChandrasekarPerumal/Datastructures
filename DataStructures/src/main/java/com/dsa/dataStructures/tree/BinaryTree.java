@@ -97,6 +97,12 @@ public class BinaryTree {
 	public static void levelOrderTraversal(Node root) {
 
 		
+		// Tree : null
+		if(root == null) {
+			return;
+		}
+		
+		
 		//Consider
 		// Queue:  1 null 2 3 null 4 5 6 null
 		// null - next line
@@ -104,6 +110,8 @@ public class BinaryTree {
 		//		1
 		//		23
 		//		456
+		
+		
 		
 		Queue<Node> queue = new LinkedList();
 
