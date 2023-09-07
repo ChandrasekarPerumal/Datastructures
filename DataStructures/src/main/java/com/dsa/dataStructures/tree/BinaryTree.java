@@ -29,13 +29,13 @@ public class BinaryTree {
 			if (nodes[indexForTraversal] == -1) {
 				return null;
 			}
-			
+
 			// First node will be built
 			Node newNode = new Node(nodes[indexForTraversal]);
-			
+
 			// Recursive call for left tree formation
 			newNode.left = buildBinaryTree(nodes);
-			
+
 			// Recursive call for right tree formation
 			newNode.right = buildBinaryTree(nodes);
 
@@ -43,19 +43,38 @@ public class BinaryTree {
 		}
 
 	}
-	
-	
+
+	public static void preOrder(Node root) {
+
+//		Time : O( N )
+		
+		if (root == null) {
+			System.out.println(-1);
+//			return;
+		} else {
+
+			System.out.println(root.data);
+
+			// Traverse thru left tree
+			preOrder(root.left);
+
+			// Traverse thru right tree
+			preOrder(root.right);
+		}
+	}
+
 	public static void main(String ar[]) {
-	int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
-		
+		int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
+
 		BinaryTr binaryTr = new BinaryTr();
-		
-		// Returns root node 
+
+		// Returns root node
 		Node root = binaryTr.buildBinaryTree(nodes);
-		
-		System.out.println(root.data);
-		
-		
+
+//		System.out.println(root.data);
+
+		preOrder(root);
+
 	}
 
 }
