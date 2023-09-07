@@ -50,8 +50,8 @@ public class BinaryTree {
 		
 		if (root == null) {
 			System.out.println(-1);
-//			return;
-		} else {
+			return;
+		} 
 
 			System.out.println(root.data);
 
@@ -60,7 +60,7 @@ public class BinaryTree {
 
 			// Traverse thru right tree
 			preOrder(root.right);
-		}
+		
 	}
 
 	
@@ -68,7 +68,8 @@ public class BinaryTree {
 	public static void inOrder(Node root) {
 		
 		if(root == null) {
-			return;			
+			System.out.println(-1);
+			return;
 		}
 		
 		inOrder(root.left);
@@ -84,6 +85,7 @@ public class BinaryTree {
 	public static void postOrder(Node root) {
 		
 		if(root == null) {
+			System.out.println(-1);
 			return;
 		}
 		
