@@ -96,23 +96,19 @@ public class BinaryTree {
 
 	public static void levelOrderTraversal(Node root) {
 
-		
 		// Tree : null
-		if(root == null) {
+		if (root == null) {
 			return;
 		}
-		
-		
-		//Consider
-		// Queue:  1 null 2 3 null 4 5 6 null
+
+		// Consider
+		// Queue: 1 null 2 3 null 4 5 6 null
 		// null - next line
 		// output : will be level by level. Like left pyramid
-		//		1
-		//		23
-		//		456
-		
-		
-		
+		// 1
+		// 23
+		// 456
+
 		Queue<Node> queue = new LinkedList();
 
 		queue.add(root);
@@ -148,6 +144,27 @@ public class BinaryTree {
 
 	}
 
+	public static int numberOfNodes(Node root) {
+
+		if (root == null) {
+			return 0;
+		}
+
+		System.out.println("Data: " + root.data);
+
+		int count_left = numberOfNodes(root.left);
+
+		System.out.println("LEFT: " + count_left);
+
+		int count_right = numberOfNodes(root.right);
+
+		System.out.println("RIGHT: " + count_left);
+
+		// +1 is for root node
+		return count_left + count_right + 1;
+
+	}
+
 	public static void main(String ar[]) {
 		int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
@@ -157,13 +174,15 @@ public class BinaryTree {
 		Node root = binaryTr.buildBinaryTree(nodes);
 
 //		preOrder(root);
-		
+
 //		inOrder(root);
 
 //		postOrder(root);
 
-		levelOrderTraversal(root);
-		
+//		levelOrderTraversal(root);
+
+		System.out.println(numberOfNodes(root));
+
 	}
 
 }
