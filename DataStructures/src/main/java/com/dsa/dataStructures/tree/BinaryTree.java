@@ -167,27 +167,38 @@ public class BinaryTree {
 
 	private static int sumOfNodes(Node root) {
 
-		
 		/*
-		 First traverse till left then if root mets null return 0;
-		 Check right of the root if not-null traverse till left and right
-		 
+		 * First traverse till left then if root mets null return 0; Check right of the
+		 * root if not-null traverse till left and right
+		 * 
 		 */
-		
-		
+
 		if (root == null) {
 			return 0;
 		}
 
-		
-		
 		int sumOfLeft = sumOfNodes(root.left);
 		int sumOfRight = sumOfNodes(root.right);
 
 		return sumOfLeft + sumOfRight + root.data;
 	}
 
+	private static int heightOfTree(Node root) {
+
+		if (root == null) {
+			return 0;
+		}
+
+		int leftTreeHeight = heightOfTree(root.left);
+		int rightTreeHeight = heightOfTree(root.right);
+
+		int height = Math.max(leftTreeHeight, rightTreeHeight) + 1;
+
+		return height;
+	}
+
 	public static void main(String ar[]) {
+
 		int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
 		BinaryTr binaryTr = new BinaryTr();
@@ -205,7 +216,9 @@ public class BinaryTree {
 
 //		System.out.println(numberOfNodes(root));
 
-		System.out.println(sumOfNodes(root));
+//		System.out.println(sumOfNodes(root));
+
+		System.out.println(heightOfTree(root));
 
 	}
 
